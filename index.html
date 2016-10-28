@@ -59,6 +59,33 @@
 <div class="page-header" id="selection">
   <h1>Test selection</h1>
 </div>
+<h2>Categorical covariate</h2>
+<h3>0 IVs, One population, two categories (Difference in proportions)</h3>
+<p>Used for finding confidence intervals for <var>p</var></p>
+<pre>prop.test(success,total)</pre>
+Finding difference of proportions with H0: <var>p2-p1=0</var> and H1: <var>p2-p1&ne;0</var>
+<pre>prop.test(x=c(success1,success2),n=c(total1,total2))</pre>
+Hypothesis test for H0:<var>p=value</var> and H1: <var>p &ne; value</var>
+<pre>prop.test(x=success,n=total,p=value)</pre>
+<hr>
+<h2>Continuous covariate</h2>
+<h3>0 IVs, One population, normal distributed DV</h3>
+Finding the confidence interval:
+<pre>t.test(x)</pre>
+Comparing if mean is equal to <var>value</var>:
+H0: Population Mean = <var>value</var>, H1: Population Mean &ne; <var>value</var>
+<pre>t.test(x,mu= value)</pre>
+<h3>1 IV with two levels (independent)</h3>
+If it is normally distributed, for the difference in means:
+H0: Mean X = Mean Y, H1: Mean X &#60; Mean Y, Mean X &#62; Mean Y or Mean X &ne; Mean Y
+<pre>t.test(x,y)</pre>
+The assumption of equal variance can be specified with <code>var.equal=</code>
+<h3>1 IV with two levels (dependent)</h3>
+If it is normally distributed, for the difference in means: H0: Mean X = Mean Y, H1: Mean X &#60; Mean Y, Mean X &#62; Mean Y or Mean X &ne; Mean Y
+<pre>t.test(x,y,paired=TRUE)</pre>
+The assumption of equal variance can be specified with <code>var.equal=</code>
+If not normal distributed:  H0: median X = median Y, H1: median X &#60; median Y, median X &#62; median Y or median X &ne; median Y
+<pre>wilcox.test(x,y)</pre>
     </div><!-- /.container -->
 
 
