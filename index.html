@@ -43,6 +43,7 @@
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#links">Useful Links</a></li>
             <li><a href="#selection">Test Selection</a></li>
+            <li><a href="#report">Writing a Report</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -50,43 +51,68 @@
 
     <div class="container">
 
-<div class="page-header" id="links">
-  <h1>Useful links</h1>
-</div>
-<a href="http://stats.stackexchange.com/questions/121490/interpretation-of-plotglm-model">CrossValidated: Interpretation of plot(glm.model)</a><br>
-<a href="http://stats.stackexchange.com/questions/57031/interpreting-interaction-terms-in-logit-regression-with-categorical-variables">CrossValidated: Intepreting interaction terms in logit regression with categorical variables</a><br>
-<a href="http://stats.stackexchange.com/questions/18480/interpretation-of-log-transformed-predictor">CrossValidated: Interpretation of log transformed predictor</a><br>
-<div class="page-header" id="selection">
-  <h1>Test selection</h1>
-</div>
-<h2>Categorical covariate</h2>
-<h3>0 IVs, One population, two categories (Difference in proportions)</h3>
-<p>Used for finding confidence intervals for <var>p</var></p>
-<pre>prop.test(success,total)</pre>
-Finding difference of proportions with H0: <var>p2-p1=0</var> and H1: <var>p2-p1&ne;0</var>
-<pre>prop.test(x=c(success1,success2),n=c(total1,total2))</pre>
-Hypothesis test for H0:<var>p=value</var> and H1: <var>p &ne; value</var>
-<pre>prop.test(x=success,n=total,p=value)</pre>
-<hr>
-<h2>Continuous covariate</h2>
-<h3>0 IVs, One population, normal distributed DV</h3>
-Finding the confidence interval:
-<pre>t.test(x)</pre>
-Comparing if mean is equal to <var>value</var>:
-H0: Population Mean = <var>value</var>, H1: Population Mean &ne; <var>value</var>
-<pre>t.test(x,mu= value)</pre>
-<h3>1 IV with two levels (independent)</h3>
-If it is normally distributed, for the difference in means:
-H0: Mean X = Mean Y, H1: Mean X &#60; Mean Y, Mean X &#62; Mean Y or Mean X &ne; Mean Y
-<pre>t.test(x,y)</pre>
-The assumption of equal variance can be specified with <code>var.equal=</code>
-<h3>1 IV with two levels (dependent)</h3>
-If it is normally distributed, for the difference in means: H0: Mean X = Mean Y, H1: Mean X &#60; Mean Y, Mean X &#62; Mean Y or Mean X &ne; Mean Y
-<pre>t.test(x,y,paired=TRUE)</pre>
-The assumption of equal variance can be specified with <code>var.equal=</code>
-If not normal distributed:  H0: median X = median Y, H1: median X &#60; median Y, median X &#62; median Y or median X &ne; median Y
-<pre>wilcox.test(x,y)</pre>
-    </div><!-- /.container -->
+<!-- Useful Links Section  -->
+
+        <div class="page-header" id="links">
+            <h1>Useful links</h1>
+        </div>
+        <a href="http://stats.stackexchange.com/questions/121490/interpretation-of-plotglm-model">CrossValidated: Interpretation of plot(glm.model)</a><br>
+        <a href="http://stats.stackexchange.com/questions/57031/interpreting-interaction-terms-in-logit-regression-with-categorical-variables">CrossValidated: Intepreting interaction terms in logit regression with categorical variables</a><br>
+        <a href="http://stats.stackexchange.com/questions/18480/interpretation-of-log-transformed-predictor">CrossValidated: Interpretation of log transformed predictor</a><br>
+        
+<!-- Test Selection -->
+        <div class="page-header" id="selection">
+            <h1>Test selection</h1>
+        </div>
+        <h2>Categorical covariate</h2>
+        <h3>0 IVs, One population, two categories (Difference in proportions)</h3>
+        <p>Used for finding confidence intervals for <var>p</var></p>
+        <pre>prop.test(success,total)</pre>
+        Finding difference of proportions with H0: <var>p2-p1=0</var> and H1: <var>p2-p1&ne;0</var>
+        <pre>prop.test(x=c(success1,success2),n=c(total1,total2))</pre>
+        Hypothesis test for H0:<var>p=value</var> and H1: <var>p &ne; value</var>
+        <pre>prop.test(x=success,n=total,p=value)</pre>
+    <hr>
+        <h2>Continuous covariate</h2>
+        <h3>0 IVs, One population, normal distributed DV</h3>
+        Finding the confidence interval:
+        <pre>t.test(x)</pre>
+        Comparing if mean is equal to <var>value</var>:
+        H0: Population Mean = <var>value</var>, H1: Population Mean &ne; <var>value</var>
+        <pre>t.test(x,mu= value)</pre>
+        <h3>1 IV with two levels (independent)</h3>
+        If it is normally distributed, for the difference in means:
+        H0: Mean X = Mean Y, H1: Mean X &#60; Mean Y, Mean X &#62; Mean Y or Mean X &ne; Mean Y
+        <pre>t.test(x,y)</pre>
+        The assumption of equal variance can be specified with <code>var.equal=</code>
+        <h3>1 IV with two levels (dependent)</h3>
+        If it is normally distributed, for the difference in means: H0: Mean X = Mean Y, H1: Mean X &#60; Mean Y, Mean X &#62; Mean Y or Mean X &ne; Mean Y
+        <pre>t.test(x,y,paired=TRUE)</pre>
+        The assumption of equal variance can be specified with <code>var.equal=</code>
+        If not normal distributed:  H0: median X = median Y, H1: median X &#60; median Y, median X &#62; median Y or median X &ne; median Y
+        <pre>wilcox.test(x,y)</pre>
+        
+<!-- Writing a Report -->
+        <div class="page-header" id="report">
+            <h2>Writing a Report</h2>
+        </div>
+        Writing a report is the key part of both the homework assignments and the examination. While there is a guide on nestor for writing reports, here is something as concise but hopefully more helpful.
+        
+        <h4>Introduction/Research Question</h4>
+        Here, look at the details of the data set (with <code>?data</code> or <code>help(data)</code> in R). This tells you about how the data was acquired and what exactly the data set means. It also tells you which of the variables is what and which one represents the response and which variables are independent variables. In this section formulate a question about the data set. Eg. Can the correlation between X and Y be modelled accurately with a linear model? Is the difference in means between K and L significant?
+        
+        <h4>Exploratory Analysis</h4>
+        Explore the data, make a histogram, a boxplot, a table of means. Whatever is appropriate for the situation. You can already start seeing what the relations are in the data. Mention these. At this point in the data analysis you can also already fit a linear model to the data. Consider all the elements of the data set and see if there are any more relations that can be explored.
+        
+        <h4>Formal Analysis</h4>
+        Here is where you usually add the output of R scripts as this is the section where you check the work you did in the previous section. If you have made a table of means or a boxplot, perform a statistical test to show wether what your tables showed earlier is relevant at all. Test the assumptions of your linear model. If you have not yet fitted your linear model, this is the place to do it and then use various model selection tools to help you refine it. If you are fitting a logistic regression, then check the link at the top of the page showing how to interpret the graphs of a <code>glm()</code>. Since the model is not linear, the plots showing the assumptions will not look the same.
+        
+        <h4>Conclusion</h4>
+        Answer your research question here. Show what you can conclude from your exploratory and formal analyses. If you have fitted a linear model of some sort, you may show the summary of it here to show how it fits with your research question. If there is something strange in the linear model, such as a certain variable showing an overall decrease when logically this should not happen, mention it.
+        
+        <h4>Discussion</h4>
+        This section is not about the statistical analysis of the data but about the data itself. You may entirely ignore your entire report for this section unless there are relevant things to mention. Again, look at how the data was collected and see if there are any outliers. If there was some sort of linear models involved, look at the leverage of individual points, discuss wether removing extreme outliers may be a benefit. Might there have been flaws in the methodology of data collection described in <code>help(data)</code>? Discuss this.
+      </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
