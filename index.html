@@ -40,10 +40,15 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#links">Useful Links</a></li>
-            <li><a href="#selection">Test Selection</a></li>
-            <li><a href="#report">Writing a Report</a></li>
+            <li class = "active" id ="primary" aria-pressed="true"><a href="#" style="color:white;background-color:#080808">Home</a></li>
+              <!-- A side note to this fix, do not put this in the .css file it will not work. If this is adjusted by class or id attributes it will be overriden by something or other in the bootstrap files only html style gives the attributes enough weight. If you are unsure what this is about see this: http://ccm.net/faq/30797-css-priority-rules-weight -->
+            <li id="secondary"><a href="#links">Useful Links</a></li>
+            <li id="secondary"><a href="#selection">Test Selection</a></li>
+            <li id="secondary"><a href="#report">Writing a Report</a></li>
+              
+            <!-- Remove this comment when the example page is not empty -->
+            <!--<li id="primary"><a href="examples.html">Examples</a></li>
+            <li id="secondary"><a href="examples.html#">Ex_Sub_1</a></li>-->
           </ul>
         </div><!--/.nav-collapse -->
       </div>

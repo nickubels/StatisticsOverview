@@ -7,3 +7,11 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+
+#secondary{
+    font-size:13px;
+}
+
+#primary{
+    font-size:18px;
+}
