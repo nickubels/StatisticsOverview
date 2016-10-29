@@ -115,6 +115,12 @@
         The assumption of equal variance can be specified with <code>var.equal=</code><br>
         If not normal distributed:  H0: median X = median Y, H1: median X &#60; median Y, median X &#62; median Y or median X &ne; median Y
         <pre>wilcox.test(x,y,paired=TRUE)</pre>
+        <h3>One or more independent variables</h3>
+        Making a model, in order to predict etc
+        <pre>lm(response~predictors)</pre>
+        H0: <var>Bj</var> = 0, H0: <var>Bj</var> &ne; 0
+        <pre>summary(model)</pre>
+        H0: <var>B1=B2=0</var>,H0: <var>B1=B2&ne;0</var>
         
         
 <!-- Writing a Report -->
