@@ -134,12 +134,41 @@
         
         <h4>Exploratory Analysis</h4>
         Explore the data, make a histogram, a boxplot, a table of means. Whatever is appropriate for the situation. You can already start seeing what the relations are in the data. Mention these. At this point in the data analysis you can also already fit a linear model to the data. Consider all the elements of the data set and see if there are any more relations that can be explored.
+        <h5>Chosing a Graph</h5>
+        <h6>General</h6>
+        To spot a corelation in data sets with multiple variables in order to be able to focus on certain variables only, use the following command to help:
+        <pre>pairs(data)</pre>
+        This creates a grid of graphs with each variable featuring in a graph where it is plotted against every other variable in the data set. This is not a definitive way of doing this but a very helpful one nevertheless. It is not recommended to include the grid of graphs in the report as it may be too small to see clearly what was intended.
+        <h6>Means</h6>
+        When comparing means of data sets, the best method of showing so with a graphical representation is a boxplot or series of them. The following is how to make a plot of the situation:
+        <pre>boxplot(response_var~categorical_var)</pre>
+        Here, this automatically takes all the categories of a categorical variable in the data sets and plots the means of the response variable based on this. This kind of graph is very useful for seeing both wether two or more means are similar to each other and wether or not the means are normally distributed. For an accurate check of distribution, isolate the data you are looking for and then make a histogram.
+        <pre>hist(data)</pre>
+        For comparison of means, an alternative is to make a table with the means sorted by category and showing only the means, but this is not recommended as the boxplot is more informative overall.
+        <h6>Linear Corelation</h6>
+        Consider fitting a general linear model to the data in the exploratory analysis and providing some basis for analysis that way. If there is a data set with response variable Z and explanatory variables X and Y the model is fitted in the following manner.
+        <pre>data.lm &lt;&#45; lm(X~Y+Z)</pre>
+        The model can then be fitted on a plot of the data with the following command:
+        <pre>abline(data.lm)</pre>
         
         <h4>Formal Analysis</h4>
         Here is where you usually add the output of R scripts as this is the section where you check the work you did in the previous section. If you have made a table of means or a boxplot, perform a statistical test to show wether what your tables showed earlier is relevant at all. Test the assumptions of your linear model. If you have not yet fitted your linear model, this is the place to do it and then use various model selection tools to help you refine it. If you are fitting a logistic regression, then check the link at the top of the page showing how to interpret the graphs of a <code>glm()</code>. Since the model is not linear, the plots showing the assumptions will not look the same.
+        <h5>Chosing what to add</h5>
+        Unlike in the exploratory analysis section, there is much more to consider here about what to add. If you are comparing means, no further graphs will be added in this section, instead, a good idea is to show the results of statistical tests such as the t-test, ANOVA, ANCOVA and more.
+        
+        <h5>Linear of Logarithmic Model</h5>
+        If you have fitted a linear model or a logarithmic model to your data, this is where you check the assumptions that the model makes. This is done by plotting the model's graphs showing assumptions. Preparing to plot this it is recommended to first use:
+        <pre>par(mfrow = c(2,2))</pre>
+        This ensures that all the four graphs created in the subsequent step will be visible at once.
+        <pre>plot(data.lm)</pre>
+        or
+        <pre>plot(data.glm)</pre>
+        For the first one, the graphs should be easily interpreted, however when checking the assumptions of a logarithmic regression model, it is important to keep in mind that the graphs will look sligtly different. The topmost link <a href="#links">here</a> should be helpful in udnerstanding how to interpret the plots.
+        If these assumptions do not fit well enough, then the thing to do is use a model selection tool to look for a better model to fit the data. This can be done through either <code>stepAIC()</code> or <code>f.test()</code> functions.
         
         <h4>Conclusion</h4>
-        Answer your research question here. Show what you can conclude from your exploratory and formal analyses. If you have fitted a linear model of some sort, you may show the summary of it here to show how it fits with your research question. If there is something strange in the linear model, such as a certain variable showing an overall decrease when logically this should not happen, mention it.
+        Answer your research question here. Show what you can conclude from your exploratory and formal analyses. If you have fitted a linear model of some sort, you may show the summary of it here to show how it fits with your research question. If there is something strange in the linear model, such as a certain variable showing an overall decrease when logically this should not happen, mention it. To do this you may want to add the output of the summary in the case that this applies to this particular conclusion.
+        <pre>summary(data.lm)</pre>
         
         <h4>Discussion</h4>
         This section is not about the statistical analysis of the data but about the data itself. You may entirely ignore your entire report for this section unless there are relevant things to mention. Again, look at how the data was collected and see if there are any outliers. If there was some sort of linear models involved, look at the leverage of individual points, discuss wether removing extreme outliers may be a benefit. Might there have been flaws in the methodology of data collection described in <code>help(data)</code>? Discuss this.
