@@ -93,6 +93,9 @@
         <pre>chisq.test(table)</pre>
         <div class="alert alert-danger" role="alert"><b>WARNING!</b> Check if all counts in cells are greater than 5, otherwise use the following test:</div>
         <pre>chisq.test(table,simulate.p.value=TRUE)</pre>
+        <h3>1 or more continuous IV together with categorical IV</h3>
+        When the dependent variable is binomial (0 or 1)
+        <pre>glm(response~predictor, family="binomial")</pre>
 
     <hr>
         <h2>Continuous covariate</h2>
@@ -120,8 +123,23 @@
         <pre>lm(response~predictors)</pre>
         H0: <var>Bj</var> = 0, H0: <var>Bj</var> &ne; 0
         <pre>summary(model)</pre>
-        H0: <var>B1=B2=0</var>,H0: <var>B1=B2&ne;0</var>
+        H0: <var>B1=B2=0</var>,H0: <var>B1=B2&ne;0</var><br>
         
+        Model selection with partial F-test: H0: Bk+1 =···=Bp =0, H1 :at least one Bj&ne;0
+        <pre>anova(model.small,model.large)</pre>
+        <h3>1 IV with 2 or more levels</h3>
+        H0: Mean1 = Mean2 =···= Meank
+        H1: Meani &ne; Meanj
+        <pre>oneway.test(data ~ factor)</pre>
+        The assumption of equal variance can be specified with <code>var.equal=</code><br>
+        <pre>aov(data ~ factor)</pre>
+        If not normal:
+		<pre>kruskal.wallis(data ~ factor)</pre>
+		To see differences, use TukeyHSD:
+		<pre>TukeyHSD(model.aov)</pre>
+		<h3>1 or more continuous, 1 factor</h3>
+		<pre>lm(response~predictor+factor(predictor2))</pre>
+		Interaction can be done with <code>*</code> instead of <code>+</code>, or <code>^2</code> for all 1st order interactions.
         
 <!-- Writing a Report -->
         <div class="page-header" id="report">
