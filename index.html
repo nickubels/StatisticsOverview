@@ -64,6 +64,9 @@
         <div class="page-header" id="selection">
             <h1>Test selection</h1>
         </div>
+        <h3>Test for normality</h3>
+        H0: parent distribution is normal, H1: The parent distribution is not normal
+        <pre>shapiro.test(data)</pre>
         <h2>Categorical covariate</h2>
         <h3>0 IVs, One population, two categories (Difference in proportions)</h3>
         <p>Used for finding confidence intervals for <var>p</var></p>
@@ -72,6 +75,16 @@
         <pre>prop.test(x=c(success1,success2),n=c(total1,total2))</pre>
         Hypothesis test for H0:<var>p=value</var> and H1: <var>p &ne; value</var>
         <pre>prop.test(x=success,n=total,p=value)</pre>
+         <h3>0 IVs, One population</h3>
+        When you want to check outcomes against probabilities, H0: π1 =P1,π2 =P2,···,πk =Pk,  H1: πi &ne; Pi for at least one i 
+        <pre>chisq.test(table, p = c(probabilities))</pre>
+        <h3>1 IV with 2 or more levels</h3>
+        Testing independence in tables, H0: the variables are independent, H1: variables are dependent<br>
+        Another type: H0: the two distributions are the same, H1: the two distributions are not the same
+        <pre>chisq.test(table)</pre>
+        <div class="alert alert-danger" role="alert"><b>WARNING!</b> Check if all counts in cells are greater than 5, otherwise use the following test:</div>
+        <pre>chisq.test(table,simulate.p.value=TRUE)</pre>
+
     <hr>
         <h2>Continuous covariate</h2>
         <h3>0 IVs, One population, normal distributed DV</h3>
@@ -84,13 +97,16 @@
         If it is normally distributed, for the difference in means:
         H0: Mean X = Mean Y, H1: Mean X &#60; Mean Y, Mean X &#62; Mean Y or Mean X &ne; Mean Y
         <pre>t.test(x,y)</pre>
-        The assumption of equal variance can be specified with <code>var.equal=</code>
+        The assumption of equal variance can be specified with <code>var.equal=</code><br>
+        If not normal distributed:  H0: median X = median Y, H1: median X &#60; median Y, median X &#62; median Y or median X &ne; median Y
+        <pre>wilcox.test(x,y)</pre>
         <h3>1 IV with two levels (dependent)</h3>
         If it is normally distributed, for the difference in means: H0: Mean X = Mean Y, H1: Mean X &#60; Mean Y, Mean X &#62; Mean Y or Mean X &ne; Mean Y
         <pre>t.test(x,y,paired=TRUE)</pre>
-        The assumption of equal variance can be specified with <code>var.equal=</code>
+        The assumption of equal variance can be specified with <code>var.equal=</code><br>
         If not normal distributed:  H0: median X = median Y, H1: median X &#60; median Y, median X &#62; median Y or median X &ne; median Y
-        <pre>wilcox.test(x,y)</pre>
+        <pre>wilcox.test(x,y,paired=TRUE)</pre>
+        
         
 <!-- Writing a Report -->
         <div class="page-header" id="report">
