@@ -144,6 +144,7 @@
 		<pre>kruskal.wallis(data ~ factor)</pre>
 		To see differences, use TukeyHSD:
 		<pre>TukeyHSD(model.aov)</pre>
+		<pre>plot(TukeyHSD(model.aov),las=2)</pre>
 		<h3>1 or more continuous, 1 factor</h3>
 		<pre>lm(response~predictor+factor(predictor2))</pre>
 		Interaction can be done with <code>*</code> instead of <code>+</code>, or <code>^2</code> for all 1st order interactions.
